@@ -47,15 +47,56 @@
     <span class="place bottom right num"></span>
 </section>
 
+<!--
+Present paper guided by a use-case.
+Organization level data interfaces.
+Start with use-case, then explain how the related work with respect to the use-case.
+Afterward we look at our vision, and conclude the presentation.
+-->
 <section id="start" class="slide" rel="schema:hasPart" resource="#start">
     <h2 property="schema:name">Overview</h2>
     <ul>
-        <li><h3>The Need</h3></li>
-        <li><h3>High level Architecture</h3></li>
-        <li><h3>Interoperability & Reuse</h3></li>
-        <li><h3>Demo</h3></li>
+        <li><h3>Veterinarian use case</h3></li>
+        <li><h3>Related Work</h3></li>
+        <li><h3>Vision</h3></li>
         <li><h3>Conclusion</h3></li>
     </ul>
+    <span class="place bottom right num"></span>
+</section>
+
+<section id="use-case-overview" class="slide" rel="schema:hasPart" resource="#use-case-overview">
+    <h2 property="schema:name">Veterinarian use case</h2>
+    <object type="image/svg+xml" data="img/interface-example-viz-use-case-overview.svg"
+            style="height: 50%; align-self: center; margin: auto auto"></object>
+    <span class="place bottom right num"></span>
+</section>
+
+<section id="sota-rpc" class="slide" rel="schema:hasPart" resource="#sota-rpc">
+    <h2 property="schema:name">RPC/ Syntactic descriptions fail to describe relationships</h2>
+    <div style="display: flex">
+        <ul style="flex: 1">
+            <li><a href="https://www.w3.org/submissions/wadl/">WADL</a></li>
+            <li><a href="https://swagger.io/specification/">OpenAPI/ Swagger</a></li>
+            <li><a href="https://www.asyncapi.com/en">AsyncAPI</a></li>
+            Can be used as documentation and to generate skeleton of client side code.
+        </ul>
+        <object type="image/svg+xml" data="img/interface-example-viz-openapi.svg"
+                style="flex:1"></object>
+    </div>
+    <span class="place bottom right num"></span>
+</section>
+
+<section id="sota-mcp" class="slide" rel="schema:hasPart" resource="#sota-mcp">
+    <h2 property="schema:name">MCP introduces ambiguity</h2>
+    <div style="display: flex">
+        <ul style="flex: 1">
+            <li><a href="https://www.w3.org/submissions/wadl/">WADL</a></li>
+            <li><a href="https://swagger.io/specification/">OpenAPI/ Swagger</a></li>
+            <li><a href="https://www.asyncapi.com/en">AsyncAPI</a></li>
+            Can be used as documentation and to generate skeleton of client side code.
+        </ul>
+        <div style="flex: 1"></div>
+    </div>
     <span class="place bottom right num"></span>
 </section>
 
