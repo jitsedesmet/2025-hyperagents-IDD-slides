@@ -197,8 +197,54 @@ Afterward we look at our vision, and conclude the presentation.
         </ol>
     </div>
 
-    <img src="./img/interface-example-viz-flow.svg"
-         style="width: 60%; margin: auto auto"/>
+    <object type="image/svg+xml" data="./img/interface-example-viz-flow.svg"
+            style="width: 60%; margin: auto auto"></object>
+
+    <span class="place bottom right num"></span>
+</section>
+
+
+<section id="tech" class="slide" rel="schema:hasPart" resource="#tech" style="display: flex; flex-direction: column">
+    <h2 property="schema:name">Algebraic Descriptions over RDF data</h2>
+    <div>
+        Get Interface Description, discover <span class="mono">&ltcreate-owner&gt</span> with:
+        <ol style="margin-bottom: 0">
+            <li><strong>Interaction method</strong>:
+                <span class="mono">POST</span> to <span class="mono">/owners</span>
+            </li>
+            <li><strong>Resource representation</strong>:
+                <span class="mono">Turtle</span>
+            </li>
+            <li><strong>Expected data shape</strong>:
+                <span class="mono">SPARQL ASK</span>
+            </li>
+            <li><strong>Consequence of success</strong>:
+                <span class="mono">SPARQL update</span> on <span class="mono">&ltdatabase&gt</span>
+            </li>
+        </ol>
+    </div>
+
+    <div style="display: flex; flex-direction: row;">
+        <pre style="margin: 0; padding: 0"><code lang="typescript" style="line-height: 1.1em; font-size: 0.7rem;">
+INSERT {
+    ?ownerBound a ex:owner ;
+        ex:name ?name ; ex:pet ?petBound .
+    ?petBound a ex:pet ;
+        ex:name ?petName ; ex:age ?age .
+} WHERE {
+    ?resource ex:name ?name ;
+    BIND( UUID() AS ?ownerUuid ) .
+    ?resource ex:pet ?pet .
+    BIND( UUID() AS ?petUuid ).
+    ?pet ex:name ?petName ;
+        ex:age ?age ;
+    BIND( URI(CONCAT(ex:owners, '/', ?ownerUuid)) AS ?ownerBound ) .
+    BIND( URI(CONCAT(?ownerBound, '/', ?petUuid)) AS ?petBound ) .
+}
+    </code></pre>
+        <object type="image/svg+xml" data="./img/interface-example-viz-add-pet.svg"
+                style="width: 40%; margin: 0 auto"></object>
+    </div>
 
     <span class="place bottom right num"></span>
 </section>
