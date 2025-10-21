@@ -86,17 +86,54 @@ Afterward we look at our vision, and conclude the presentation.
     <span class="place bottom right num"></span>
 </section>
 
+<!--
+ In the context of data api's agent integration tools like MCP can be used to for data integration,
+ but their use case is much broader.
+ It is at it's core still an RPC description, and has the same problems.
+ The difference is that now the endpoints can describe their relation to a central resource which might solve our issue.
+-->
 <section id="sota-mcp" class="slide" rel="schema:hasPart" resource="#sota-mcp">
     <h2 property="schema:name">MCP introduces ambiguity</h2>
-    <div style="display: flex">
-        <ul style="flex: 1">
-            <li><a href="https://www.w3.org/submissions/wadl/">WADL</a></li>
-            <li><a href="https://swagger.io/specification/">OpenAPI/ Swagger</a></li>
-            <li><a href="https://www.asyncapi.com/en">AsyncAPI</a></li>
-            Can be used as documentation and to generate skeleton of client side code.
+    <div style="display: flex;">
+        <ul style="flex: 1; margin-bottom: 0">
+            <li>Standard for connecting AI applications to external systems</li>
+            <li>Builds on <a href="https://www.jsonrpc.org/">JSON-RPC</a> spec</li>
+            <li style="line-height: 0.6rem">
+                Example interface description:
+                <pre><code lang="typescript" style="line-height: 1.1em; font-size: 0.6rem;">
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "result": {
+    "tools": [
+      {
+        "name": "get_owner_and_pets",
+        "title": "Owner Information",
+        "description": "Retrieves all information about an owner and their pets registered with 'heathy pet co.'",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "The systems uuid-v4 of to represent the owner as registered in the system"
+            }
+          },
+          "required": ["id"]
+        }
+      },
+    ]
+  }
+}  <a href="https://modelcontextprotocol.io/docs/learn/architecture#how-this-works-in-ai-applications">(docs)</a>
+            </code></pre></li>
         </ul>
         <div style="flex: 1"></div>
     </div>
+    <a href="https://modelcontextprotocol.io/docs/getting-started/intro">
+        <img src="./img/mcp-logo.svg" alt="Model Context Protocol (MCP) logo"
+            style="width: 30%; margin-top: auto"/>
+    </a>
+    <object type="image/svg+xml" data="img/interface-example-viz-mcp.svg"
+            style="position: absolute; width: 30%; right: 5%; top: 25%"></object>
     <span class="place bottom right num"></span>
 </section>
 
