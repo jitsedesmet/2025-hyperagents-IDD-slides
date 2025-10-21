@@ -129,7 +129,7 @@ Afterward we look at our vision, and conclude the presentation.
     </div>
     <a class="pure" href="https://modelcontextprotocol.io/docs/getting-started/intro">
         <img src="./img/mcp-logo.svg" alt="Model Context Protocol (MCP) logo"
-            style="width: 30%; margin-top: auto"/>
+            style="width: 30%; margin-top: auto; z-index: 2"/>
     </a>
     <object type="image/svg+xml" data="img/interface-example-viz-mcp.svg"
             style="position: absolute; width: 30%; right: 5%; top: 25%"></object>
@@ -288,6 +288,53 @@ CONSTRUCT {
         <object type="image/svg+xml" data="./img/interface-example-viz-get-data.svg"
                 style="width: 40%; margin: 0 auto"></object>
     </div>
+
+    <span class="place bottom right num"></span>
+</section>
+
+<section id="transfer" class="slide" rel="schema:hasPart" resource="#transfer" style="display: flex; flex-direction: column">
+    <h2 property="schema:name">Beyond REST: consistency boundary</h2>
+    <div>
+        Get Interface Description, discover <span class="mono">&ltchange-owner&gt</span>
+        using interaction method:
+        <span class="mono">POST</span> to <span class="mono">/change-owners/{id}/{pet-id}</span>
+    </div>
+
+    <div style="display: flex; flex-direction: row;">
+        <pre style="margin: 0; padding: 0"><code lang="typescript" style="line-height: 1.1em; font-size: 0.7rem;"
+>DELETE {
+    GRAPH &ltdatabase&gt {
+        ?origOwner ex:pet ?orig-pet .
+        ?origPet a ex:pet ;
+            ex:age ?age ;
+            ex:name ?name .
+    }
+} INSERT {
+    GRAPH &ltdatabase&gt {
+        ?newOwner ex:pet ?movedIri .
+        ?movedIri a ex:pet ;
+            ex:age ?age
+            ex:name ?name
+    }
+} WHERE {
+    # From received data:
+    ?o ex:new-owner ?newOwner .
+    BIND( URI( CONCAT(ex:owners, '/', ?id) ) AS ?origOwner ) .
+    BIND( URI( CONCAT(?origOwner, '/', ?petId) ) AS ?origPet ) .
+    BIND( URI( CONCAT(?newOwner, '/', ?petId) ) AS ?movedIri ) .
+    # Go look in the current state of the database for whether the owner and pet exist.
+    GRAPH &ltdatabase&gt {
+        ?origOwner ex:pet ?origPet .
+        ?origPet a ex:pet ;
+            ex:age ?age ;
+            ex:name ?name .
+        ?newOwner a ex:owner ;
+    }
+}</code></pre>
+    </div>
+
+    <object type="image/svg+xml" data="./img/interface-example-viz-transfer.svg"
+            style="position: absolute; width: 40%; right: 5%; top: 35%"></object>
 
     <span class="place bottom right num"></span>
 </section>
