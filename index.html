@@ -123,12 +123,11 @@ Afterward we look at our vision, and conclude the presentation.
       },
     ]
   }
-}  <a href="https://modelcontextprotocol.io/docs/learn/architecture#how-this-works-in-ai-applications">(docs)</a>
-            </code></pre></li>
+}  <a href="https://modelcontextprotocol.io/docs/learn/architecture#how-this-works-in-ai-applications">(docs)</a></code></pre></li>
         </ul>
         <div style="flex: 1"></div>
     </div>
-    <a href="https://modelcontextprotocol.io/docs/getting-started/intro">
+    <a class="pure" href="https://modelcontextprotocol.io/docs/getting-started/intro">
         <img src="./img/mcp-logo.svg" alt="Model Context Protocol (MCP) logo"
             style="width: 30%; margin-top: auto"/>
     </a>
@@ -225,12 +224,14 @@ Afterward we look at our vision, and conclude the presentation.
     </div>
 
     <div style="display: flex; flex-direction: row;">
-        <pre style="margin: 0; padding: 0"><code lang="typescript" style="line-height: 1.1em; font-size: 0.7rem;">
-INSERT {
-    ?ownerBound a ex:owner ;
-        ex:name ?name ; ex:pet ?petBound .
-    ?petBound a ex:pet ;
-        ex:name ?petName ; ex:age ?age .
+        <pre style="margin: 0; padding: 0"><code lang="typescript" style="line-height: 1.1em; font-size: 0.7rem;"
+>INSERT {
+    GRAPH &ltdatabase&gt {
+        ?ownerBound a ex:owner ;
+            ex:name ?name ; ex:pet ?petBound .
+        ?petBound a ex:pet ;
+            ex:name ?petName ; ex:age ?age .
+    }
 } WHERE {
     ?resource ex:name ?name ;
     BIND( UUID() AS ?ownerUuid ) .
@@ -240,9 +241,51 @@ INSERT {
         ex:age ?age ;
     BIND( URI(CONCAT(ex:owners, '/', ?ownerUuid)) AS ?ownerBound ) .
     BIND( URI(CONCAT(?ownerBound, '/', ?petUuid)) AS ?petBound ) .
-}
-    </code></pre>
+}</code></pre>
         <object type="image/svg+xml" data="./img/interface-example-viz-add-pet.svg"
+                style="width: 40%; margin: 0 auto"></object>
+    </div>
+
+    <span class="place bottom right num"></span>
+</section>
+
+<section id="get-data" class="slide" rel="schema:hasPart" resource="#get-data" style="display: flex; flex-direction: column">
+    <h2 property="schema:name">Derivation over an underlying resource</h2>
+    <div>
+        Get Interface Description, discover <span class="mono">&ltget-owners&gt</span> and <span class="mono">&ltget-owner&gt</span> with:
+        <ol style="margin-bottom: 0">
+            <li>Interaction method:
+                <span class="mono">GET</span> to <span class="mono">/owners</span> and <span class="mono">GET</span> to <span class="mono">/owner/{id}</span>
+            </li>
+            <li>Resource representation:
+                <span class="mono">Turtle</span>
+            </li>
+            <li>No expected data, but consequence of success a
+                <span class="mono">SPARQL CONSTRUCT</span>
+            </li>
+        </ol>
+    </div>
+
+    <div style="display: flex; flex-direction: row;">
+        <pre style="margin: 0; padding: 0"><code lang="typescript" style="line-height: 1.1em; font-size: 0.7rem;"
+>CONSTRUCT { [] ex:item ?owner . } WHERE {
+    GRAPH &ltdatabase&gt {
+        ?owner a ex:owner .
+    }
+}
+
+CONSTRUCT {
+    ?id a ex:owner ;
+        ?ownerP ?ownerO ;
+    ?ownerO ?petP ?petO ;
+} WHERE {
+    GRAPH &ltdatabase&gt {
+        ?id a ex:owner ;
+            ?ownerP ?ownerO ;
+        OPTIONAL { ?ownerO ?petP ?petO . }
+    }
+}</code></pre>
+        <object type="image/svg+xml" data="./img/interface-example-viz-get-data.svg"
                 style="width: 40%; margin: 0 auto"></object>
     </div>
 
