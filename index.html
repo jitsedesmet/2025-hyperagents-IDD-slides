@@ -159,6 +159,32 @@ Afterward we look at our vision, and conclude the presentation.
     <span class="place bottom right num"></span>
 </section>
 
+<section id="sota-sparql" class="slide" rel="schema:hasPart" resource="#sota-sparql">
+    <h2 property="schema:name">Query-Based interfaces can be cost heavy, inherently symmetrical, or resemble RPC</h2>
+    <div style="display: flex;">
+        <ul style="flex: 2; margin-bottom: 0">
+            <li>
+                <ul class="inline" style="margin-left: 0">
+                    <li><a href="https://query.wikidata.org/">SPARQL endpoint</a></li>
+                    <li><a href="https://graphql.org/">GraphQL</a></li>
+                </ul>
+            </li>
+            <li>SPARQL endpoint only models 1 resource, the data</li>
+            <li>GraphQL functions describes like RPC</li>
+            <li>Both tie into an 'expensive' execution environment</li>
+        </ul>
+        <div style="flex: 1"></div>
+    </div>
+    <div style="display: flex; flex-direction: column; align-items: center;
+                position: absolute; top: 25%; right: 5%; width: 30%; height: 65%">
+        <object type="image/svg+xml" data="img/interface-example-viz-sparql.svg"
+                style="width: 60%; transform: translate(10%, 0)"></object>
+        <object type="image/svg+xml" data="img/interface-example-viz-graphql.svg"
+                style="margin-top: auto; width: 100%"></object>
+    </div>
+    <span class="place bottom right num"></span>
+</section>
+
 <section class="badge">
     <p class="license" style="margin-top: auto">
         &#169; <span property="schema:copyrightYear">2025</span>
