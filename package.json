@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "shower serve",
-    "pdf": "shower pdf",
+    "pdf": "shower pdf -o ./img/slides.pdf",
     "archive": "shower archive",
     "build": "shower bundle"
   },

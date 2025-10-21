@@ -30,6 +30,7 @@ jobs:
       - name: Install and Build 🔧
         run: |
           npm install
+          npm run pdf
           npm run build
       - name: Upload artifact
         # Automatically uploads an artifact from the './_site' directory by default

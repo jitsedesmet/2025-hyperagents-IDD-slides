@@ -17,4 +17,5 @@ jobs:
       - name: Install and Build 🔧
         run: |
           npm install
+          npm run pdf
           npm run build
