@@ -122,7 +122,7 @@ Afterward we look at our vision, and conclude the presentation.
           "properties": {
             "id": {
               "type": "string",
-              "description": "The systems uuid-v4 of to represent the owner as registered in the system"
+              "description": "The systems uuid-v4 used to represent the owner as registered in the system"
             }
           },
           "required": ["id"]
@@ -155,7 +155,7 @@ Afterward we look at our vision, and conclude the presentation.
                 </ul>
             </li>
             <li>Model RESTful interactions well<br>
-                (GET, POST, PATCH, DELETE)</li>
+                (GET, PUT, PATCH, DELETE, POST)</li>
             <li>Do not model <span style="text-decoration: underline">underlying resources</span> </li>
         </ul>
         <div style="flex: 1"></div>
@@ -355,8 +355,15 @@ CONSTRUCT {
         <li>Using existing query writing skills</li>
     </ol>
 
+    <h4 style="margin: 0">Future work</h4>
+    <ol>
+        <li>Formalization</li>
+        <li>Fine-grained, policy aware semantics</li>
+        <li>Proof of Concept</li>
+    </ol>
+
     <object type="image/svg+xml" data="./img/interface-example-viz-flow-description.svg"
-            style="width: 60%; align-self: end;"></object>
+            style="position: absolute; transform: translate(0, -50%); width: 45%; top: 60%; right: 10px;"></object>
 
     <span class="place bottom right num"></span>
 </section>
