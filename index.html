@@ -390,6 +390,34 @@ CONSTRUCT {
     <span class="place bottom right num"></span>
 </section>
 
+
+<section id="additional" class="slide" rel="schema:hasPart" resource="#additional" style="display: flex; flex-direction: column">
+    <h2 property="schema:name" class="shout">Additional</h2>
+</section>
+
+<section id="related-issues" class="slide" rel="schema:hasPart" resource="#related-issues" style="display: flex; flex-direction: column">
+    <h2 property="schema:name">Related Issues</h2>
+    <ol>
+        By explicitly describing the algebraic mappings, you enter the database realm:
+        <li><a href="https://www.vldb.org/conf/2001/P059.pdf">View selection</a>
+            <span style="font-size: 0.8em">(what to materialize)</span>
+        </li>
+        <li><a href="https://en.wikipedia.org/wiki/Schema_migration">Schema transformation/ migration</a>
+            <span style="font-size: 0.8em">(when original resource is not accessible)</span>
+        </li>
+        <li><a href="https://docs.aws.amazon.com/redshift/latest/dg/materialized-view-auto-rewrite.html">Query rewriting using materialized views</a><br>
+            <span style="font-size: 0.8em">(targeting some resource, can you rewrite using views)</span>
+        </li>
+        <li><a href="https://dl.acm.org/doi/10.1145/77643.77645">The View Update Problem</a>
+            <span style="font-size: 0.8em">(when you target non-materialized resources)</span>
+        </li>
+        <li><a href="https://wiki.postgresql.org/wiki/Incremental_View_Maintenance">Incremental view maintenance</a>
+            <span style="font-size: 0.8em">(can be interesting for large views)</span>
+        </li>
+        <li>New stuff too: what endpoints to call and how, given an update</li>
+    </ol>
+</section>
+
 <section class="badge">
     <p class="license" style="margin-top: auto">
         &#169; <span property="schema:copyrightYear">2025</span>
